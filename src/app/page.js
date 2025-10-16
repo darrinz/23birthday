@@ -39,7 +39,7 @@ export default function Home() {
         <h1 className="title">THE UNCTION</h1>
         <h2 className = "bday">Darrin's 23rd birthday</h2>
         <h2 className="location">1115 Willard St.</h2>
-        <h2>Saturday, October 19th @ 8PM</h2>
+        <h2>Saturday, October 18th @ 8PM</h2>
         <p className="subtitle">Bar push around 10:30 after probably</p>
         <ul className="features">
           <li>play music on the open decks</li>
