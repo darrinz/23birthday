@@ -1,95 +1,66 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import styles from "./page.module.css";
+import "./globals.css";
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [tiles, setTiles] = useState([]);
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+  useEffect(() => {
+    // Calculate number of tiles needed to cover viewport
+    const tileSize = 100; // pixels
+    const cols = Math.ceil(window.innerWidth / tileSize) + 1; // Add extra column
+    const rows = Math.ceil(window.innerHeight / tileSize) + 1; // Add extra row
+    const numTiles = cols * rows;
+
+    const randomTiles = Array.from({ length: numTiles }, () =>
+      Math.floor(Math.random() * 49)
+    );
+    setTiles(randomTiles);
+  }, []);
+
+  return (
+    <>
+      <div className="tiled-background">
+        {tiles.map((tileNum, index) => (
+          <div key={index} className="tile">
             <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src={`/tiles/tile_${tileNum}.jpg`}
+              alt=""
+              fill
+              style={{ objectFit: 'cover' }}
             />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+          </div>
+        ))}
+      </div>
+      <div className="container">
+        <p>You are cordially invited to...</p>
+        <h1 className="title">THE UNCTION</h1>
+        <h2 className = "bday">Darrin's 23rd birthday</h2>
+        <h2 className="location">1115 Willard St.</h2>
+        <h2>Saturday, October 19th @ 8PM</h2>
+        <p className="subtitle">Bar push around 10:30 after probably</p>
+        <ul className="features">
+          <li>play music on the open decks</li>
+          <li>drink the free alcohol</li>
+          <li>see our cat</li>
+          <li>help me with my 482 midterm</li>
+          <li>tie Jon to a tree(?)</li>
+        </ul>
+        <p className="contact">For questions: please contact (seven one two) 490-8230. Thank you.</p>
+        <div className="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2951.234567890123!2d-83.74321!3d42.28012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883cae3f01234567%3A0x1234567890abcdef!2s1115%20Willard%20St%2C%20Ann%20Arbor%2C%20MI!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+            width="100%"
+            height="250"
+            style={{ border: 0, borderRadius: '4px' }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+    </>
   );
 }
