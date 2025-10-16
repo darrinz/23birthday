@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata = {
   title: "Darrin's 23rd",
-  description: "You are cordially invited to Darrin's 23rd birthday bash",
+  description: "man i hate this part of texas",
 };
 
 export default function RootLayout({ children }) {
