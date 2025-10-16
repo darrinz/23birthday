@@ -13,15 +13,20 @@
 }
 
 body, html {
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   margin: 0;
   padding: 0;
+  font-family: 'Berkeley Mono', monospace;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  font-family: 'Berkeley Mono', monospace;
+  padding: 2rem 0;
 }
 
 .tiled-background {
@@ -58,7 +63,6 @@ body, html {
   text-align: left;
   color: white;
   background-color:blue;
-  border-radius: 8px;
   border-top: 4px solid rgba(255, 255, 255, 0.3);
   border-left: 4px solid rgba(255, 255, 255, 0.25);
   border-right: 4px solid rgba(0, 0, 0, 0.4);
@@ -99,7 +103,20 @@ body, html {
 
 @media (max-width: 768px) {
   .container {
-    padding: 2rem;
-    max-width: 85%;
+    padding: 1.5rem;
+    max-width: 90%;
+    margin: 1rem auto;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .bday {
+    font-size: 1.2rem;
+  }
+
+  body {
+    padding: 1rem 0;
   }
 }
